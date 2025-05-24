@@ -1,0 +1,21 @@
+plugin:
+  nodeport-patcher: # A unique name for your plugin instance
+    image: ghcr.io/segator/vcluster-nodeport-plugin/vcluster-nodeport-patcher:latest
+    env:
+      - name: TARGET_SERVICE_NAMESPACE
+        value: "traefik" # Namespace of the Traefik service on the host
+      - name: TARGET_SERVICE_NAME
+        value: "traefik" # Name of the Traefik service on the host
+      - name: HTTP_NODE_PORT
+        value: "30080" # Desired NodePort for the 'web' port
+      - name: HTTPS_NODE_PORT
+        value: "30443" # Desired NodePort for the 'websecure' port
+      - name: LOG_LEVEL # Optional: debug, info, warn, error
+        value: "info"
+
+    rbac:
+      role:
+        extraRules:
+          - apiGroups: [""] # Core API group
+            resources: ["services"]
+            verbs: ["get", "patch"]          
