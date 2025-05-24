@@ -9,6 +9,7 @@ RUN go mod download
 
 # Copy the source code
 COPY main.go main.go
+COPY hook hook
 
 # Build the Go application
 # -ldflags="-s -w" strips debug information and symbols, reducing binary size
