@@ -3,7 +3,7 @@ BINARY_PATH=./bin/$(BINARY_NAME)
 MAIN_GO_PATH=./main.go
 
 # Default image name - can be overridden
-IMAGE_NAME?=segator/vcluster-nodeport-plugin
+IMAGE_NAME?=vcluster-nodeport-plugin
 IMAGE_TAG?=latest
 
 # Go parameters
@@ -48,7 +48,7 @@ clean:
 	@echo "Clean complete."
 
 .PHONY: push
-push: build
+push:
 	@echo "Pushing Docker image $(IMAGE_NAME):$(IMAGE_TAG)..."
 	@docker push $(IMAGE_NAME):$(IMAGE_TAG)
 	@echo "Docker image push complete."
