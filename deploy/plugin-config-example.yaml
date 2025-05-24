@@ -6,10 +6,10 @@ plugin:
         value: "traefik" # Namespace of the Traefik service on the host
       - name: TARGET_SERVICE_NAME
         value: "traefik" # Name of the Traefik service on the host
-      - name: HTTP_NODE_PORT
-        value: "30080" # Desired NodePort for the 'web' port
-      - name: HTTPS_NODE_PORT
-        value: "30443" # Desired NodePort for the 'websecure' port
+      - name: PORT_MAPPINGS
+        value: "web:30080, web:30443"
+      - name: LABEL_SELECTOR # Optional: Filter services by labels (format: key1=value1,key2=value2)
+        value: "app=traefik,tier=frontend"
       - name: LOG_LEVEL # Optional: debug, info, warn, error
         value: "info"
 
