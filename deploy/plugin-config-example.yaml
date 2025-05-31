@@ -1,6 +1,6 @@
 plugin:
   nodeport-patcher: # A unique name for your plugin instance
-    image: ghcr.io/segator/vcluster-nodeport-plugin/vcluster-nodeport-patcher:latest
+    image: ghcr.io/segator/vcluster-nodeport-plugin/vcluster-nodeport-plugin:latest
     env:
       - name: TARGET_SERVICE_NAMESPACE
         value: "traefik" # Namespace of the Traefik service on the host

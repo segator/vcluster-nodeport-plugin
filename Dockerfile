@@ -1,5 +1,4 @@
-FROM alpine:3.18
+FROM alpine
 
-COPY bin/plugin /plugin
-
-ENTRYPOINT ["/plugin"]
+COPY bin/plugin /plugin/plugin
+WORKDIR /
