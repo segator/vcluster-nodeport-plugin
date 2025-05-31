@@ -22,13 +22,11 @@ jobs:
         with:
           go-version: '1.24'
 
-      - name: Define Image Base Name
-        id: define_image_base_name
-        run: echo "IMAGE_BASE_NAME=ghcr.io/${{ github.repository }}/vcluster-nodeport-plugin" >> $GITHUB_ENV
+      - name: Define Image Name
+        id: define_image_name
+        run: echo "IMAGE_NAME=ghcr.io/${{ github.repository }}/vcluster-nodeport-plugin" >> $GITHUB_ENV
 
       - name: Build
-        env:
-          IMAGE_NAME: ${{ env.IMAGE_BASE_NAME }}
         run: |
           IMAGE_TAG=${{ github.sha }} make build
           IMAGE_TAG=latest make build
@@ -48,8 +46,6 @@ jobs:
 
       - name: push
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
-        env:
-          IMAGE_NAME: ${{ env.IMAGE_BASE_NAME }}
         run: |
           IMAGE_TAG=${{ github.sha }} make push
           IMAGE_TAG=latest make push

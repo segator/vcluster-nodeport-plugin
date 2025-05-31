@@ -24,7 +24,7 @@ help:
 	@echo "  help           Show this help message"
 
 .PHONY: build
-build: go-build
+build: go-build docker-build
 
 .PHONY: go-build
 go-build:
