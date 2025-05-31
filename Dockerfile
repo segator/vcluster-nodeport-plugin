@@ -1,4 +1,4 @@
 FROM alpine
-
-COPY bin/plugin /plugin/plugin
 WORKDIR /
+RUN mkdir -p /plugin
+COPY bin/plugin /plugin/plugin
